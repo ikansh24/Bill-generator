@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  	string fmenu[25] ={"Burger","Coke  ","Coffee","Wings","Nuggets","Fries","Faludha","Icecrem","Pizza","Shawarma"};
+
+  	int price[25] ={ 299,40,99,249,149,80,150,100,499,149};
+  
+  	string omenu[25];
+  	int oqty[25];
+  	int opr[25];
+  	int itotal[25];
+
+	string name;
+	long int number;
+	int order, quantity,j,total=0,discount=0;
+	int n=0,c,f=0,f1=0;
+	
+  	cout<<"\t\t  ****** Welcome To Collage Canteeen ******"<<endl;
+  	cout<<"\t\t\tMit academy of engeneering"<<endl<<"\t\t\t\tAlandi,Pune"<<endl<<"\t\t\t\tPIN:412105"<<endl;
+  	cout<<"Enter your Personal details"<<endl;
+  	cout<<"Enter your Name:"<<endl;
+  	cin>>name;
+  	cout<<"Enter your Ph no:"<<endl;
+  	cin>>number;
+  	
+  	cout<<"Here is our mouth watering food menu"<<endl;
+  	cout<<"   Item\t\t\tPrice"<<endl<<endl;
+  	for (int i = 0; i < 10; i++)
+  	{
+    	cout << i + 1 << ". " << fmenu[i] <<"\t\t"<<price[i]<< endl;
+  	}
+  	
+	do
+	{
+		cout << "\nSelect the food you want to order : ";
+  		cin >> order;
+  		omenu[n]=fmenu[order-1];
+		cout << "\nYou have selected " << fmenu[order - 1] << endl;
+		opr[n]=price[order-1];
+  		cout << "\nEnter Quantity : ";
+		cin >> quantity;
+		oqty[n]=quantity;
+		n++;
+		
+		cout<<"Do you want to add more items press 1 for YES press 0 for NO"<<endl;
+		cin>>c;
+	}while(c!=0);
+	
+	cout<<"\n-------------------------------------------------------"<<endl;
+  cout << "\t********Printing BILL Details********"<<endl<<endl;
+  cout<<"\tCustomer Name:"<<name<<"\t\t"<<"Ph no:"<<number<<endl<<endl;
+	for(j=0;j<=n;j++)
+	{
+		itotal[j] = oqty[j]*opr[j];
+	}
+	cout<<"S.no\tItem\t\tQuantity\tRate\tAmount"<<endl;
+	for(j=0;j<n;j++)
+	{
+		cout<<j+1<<"\t"<<omenu[j]<<"\t\t"<<oqty[j]<<"\t\t"<<opr[j]<<"\t"<<itotal[j]<<endl;
+	}
+	for(j=0;j<n;j++)
+	{
+		total=total+itotal[j];
+	}
+	cout<<"-------------------------------------------------------"<<endl;
+	cout<<"Total\t\t\t\t\t\t"<<total<<endl;
+	if(total>=500 && total<=800)
+	{
+		discount=total*10/100;
+		total=total - discount;
+		f=1;
+	}
+	else if(total>=1000)
+	{
+		discount=total*15/100;
+		total=total - discount;
+		f1=1;
+	}
+	cout<<"Discount\t\t\t\t\t"<<discount<<endl;
+	cout<<"Grand Total\t\t\t\t\t"<<total<<endl;
+	
+	if(f==1)
+	{
+		cout<<"Yay you got an extra 10% Discount"<<endl;
+	}
+	else if(f1==1)
+	{
+		cout<<"Yay you got an extra 15% Discount"<<endl;
+	}
+	cout<<"-------------------------------------------------------"<<endl;
+	cout<<"\t****** Thank you plz Visit again ******"<<endl;
+
+  return 0;
+}
